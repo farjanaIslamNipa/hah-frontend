@@ -6,7 +6,7 @@ import {useGetUsersQuery} from "../../redux/features/auth/authApi";
 import {TDonation} from "../../types";
 import {useState} from "react";
 import DonateModal from "./DonateModal";
-import {donationSchema} from "./zodDonateValidation";
+import {donationSchema} from "../supplies/zodDonateValidation";
 import {zodResolver} from "@hookform/resolvers/zod";
 
 

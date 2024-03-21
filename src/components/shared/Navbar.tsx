@@ -62,6 +62,12 @@ const Navbar = () => {
                     Dashboard
                   </NavLink>
                 }
+                  <NavLink to="/leaderboard" className="nav-item" end>
+                    Leaderboard
+                  </NavLink>
+                  <NavLink to="/community" className="nav-item" end>
+                    Community
+                  </NavLink>
                 {
                   !token && 
                   <NavLink to="/login" className="nav-item flex items-center gap-1 ">

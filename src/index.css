@@ -217,3 +217,10 @@ textarea {
   background-size: cover;
   height: 200px;
 }
+
+.donor-bg{
+  background-image: url('./assets/images/donor-bg.png');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: contain;
+}

@@ -55,7 +55,6 @@ const SupplyView = () => {
           </div>
         </div>
       </div>
-      {/* <DonateModal  donateModal={donateModal} closeDonateModal={closeDonateModal} user={user} /> */}
     </div>
   );
 };
