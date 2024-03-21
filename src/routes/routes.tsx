@@ -14,6 +14,7 @@ import CreateSupply from "../pages/dashboard/supply/CreateSupply";
 import DonatePage from "../pages/donation/DonatePage";
 import DonorLeaderBoard from "../pages/donation/DonorLeaderBoard";
 import Community from "../pages/community/Community";
+import CreateTestimonial from "../pages/dashboard/testimonials/CreateTestimonial";
 
 const router = createBrowserRouter([
   {
@@ -67,6 +68,10 @@ const router = createBrowserRouter([
       {
         path: "create-supply",
         element: <CreateSupply />,
+      },
+      {
+        path: "create-testimonial",
+        element: <CreateTestimonial />,
       },
     ],
   },

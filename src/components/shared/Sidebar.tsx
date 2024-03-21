@@ -4,6 +4,7 @@ import dashboardIcon from "../../assets/images/dashbaord-white.svg";
 import serviceIcon from "../../assets/images/service-white.svg";
 import eventIcon from "../../assets/images/event-white.svg";
 import recentEventIcon from "../../assets/images/recent-event-white.svg";
+import testimonialIcon from "../../assets/images/testimonial.svg";
 import {useAppDispatch} from "../../redux/hooks";
 import { logoutUser} from "../../redux/features/auth/authSlice";
 import {toast} from "sonner";
@@ -55,6 +56,18 @@ const Sidebar = () => {
             />
             <p className="dashboard-nav-item">
               Create Supply
+            </p>
+          </div>
+        </NavLink>
+        <NavLink to="/dashboard/create-testimonial">
+          <div className="flex items-end gap-2 p-1">
+            <img
+              src={testimonialIcon}
+              alt="Create Supply"
+              className="h-7 sm:h-5 w-7 sm:w-5"
+            />
+            <p className="dashboard-nav-item">
+              Create Testimonial
             </p>
           </div>
         </NavLink>

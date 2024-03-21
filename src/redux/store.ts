@@ -4,6 +4,8 @@ import authReducer from './features/auth/authSlice'
 import supplyReducer from './features/supply/supplySlice'
 import donationReducer from './features/donations/donationSlice'
 import opinionReducer from './features/opinions/opinionSlice'
+import testimonialReducer from './features/testimonials/testimonialSlice'
+import volunteerReducer from './features/volunteers/volunteerSlice'
 import storage from 'redux-persist/lib/storage'
 import { 
   persistReducer, 
@@ -28,7 +30,9 @@ export const store = configureStore({
     auth: persistedAuthReducer,
     supplies: supplyReducer,
     donations: donationReducer,
-    opinions: opinionReducer
+    opinions: opinionReducer,
+    testimonials: testimonialReducer,
+    volunteers: volunteerReducer,
   },
   middleware : (getDefaultMiddlewares) => getDefaultMiddlewares({
     serializableCheck: {

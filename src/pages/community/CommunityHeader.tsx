@@ -8,8 +8,8 @@ import {TResponse} from '../../types';
 import {TOpinion} from '../../types/opinion.type';
 
 type TUserInfo = {
-  username: string;
-  email: string;
+  username: string | null;
+  email: string | null;
 }
 
 const CommunityHeader = ({userInfo} : {userInfo: TUserInfo}) => {
