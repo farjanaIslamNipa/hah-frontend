@@ -8,12 +8,13 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { FieldValues, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useLoginUserMutation } from "../../redux/features/auth/authApi";
+import { useGetUsersQuery, useLoginUserMutation } from "../../redux/features/auth/authApi";
 import { TLoggedInUser, loginSchema } from "./ZodAuthValidation";
 import { toast } from "sonner";
 import { useAppDispatch } from "../../redux/hooks";
 import { setUser } from "../../redux/features/auth/authSlice";
 import { verifyToken } from "../../utils/verifyToken";
+import {TUser, TUserInfo} from "../../types";
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -27,6 +28,7 @@ const Login = () => {
   const dispatch = useAppDispatch();
 
   const [loginUser] = useLoginUserMutation();
+  const {data: userData, isError} = useGetUsersQuery(undefined)
 
   const onSubmit = async (data: FieldValues) => {
     const toastId = toast.loading("Logging in");
@@ -38,10 +40,12 @@ const Login = () => {
 
       const res = await loginUser(userInfo).unwrap();
 
-      const user = verifyToken(res?.token as string);
+      const user = verifyToken(res?.token as string) as TUser
 
+      const currentUser = userData?.users?.find((info: TUserInfo) => info.email === user.email)
       dispatch(
         setUser({
+          username: currentUser.name,
           user: user,
           token: res?.token,
         })
@@ -55,7 +59,9 @@ const Login = () => {
       });
     }
   };
-
+  if (isError) {
+    return <p className="p-5 font-bold text-brand text-center">Loading...</p>;
+  }
   return (
     <AuthLayout>
       <div className="flex justify-center">

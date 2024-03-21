@@ -1,12 +1,22 @@
 import CommunityHeader from "./CommunityHeader";
 import hah from '../../assets/images/hah.svg'
 import {useState} from "react";
+import {useAppSelector} from "../../redux/hooks";
+import {currentUser, currentUsername} from "../../redux/features/auth/authSlice";
 
 const Community = () => {
   const [showComments, setShowComments] = useState(false)
+  const user = useAppSelector(currentUser)
+  const username = useAppSelector(currentUsername)
+
+  const userInfo = {
+    username,
+    email: user?.email
+  }
+
   return (
     <div className="custom-container">
-      <CommunityHeader />
+      <CommunityHeader userInfo={userInfo} />
       <div className="my-20 max-w-[80%] mx-auto">
         <div className="border rounded-xl p-6 grid grid-cols-12 gap-3">
           <div className="col-span-3">
