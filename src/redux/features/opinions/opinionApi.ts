@@ -18,11 +18,14 @@ export const opinionApi = baseApi.injectEndpoints({
       invalidatesTags: ["opinions"]
     }),
     addComment: builder.mutation({
-      query: (args) => ({
-        url: `/add-comment/${args.id}`,
-        method: "PUT",
-        body: args?.data,
-      }),
+      query: (args) => {
+        console.log(args, 'args')
+        return {
+          url: `/add-comment/${args?.id}`,
+          method: "PUT",
+          body: args?.data,
+        }
+      },
       invalidatesTags: ["opinions"]
     }),
 

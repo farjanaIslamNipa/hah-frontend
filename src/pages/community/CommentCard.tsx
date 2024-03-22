@@ -1,29 +1,49 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import {FormEvent, useState} from 'react';
+import {FormEvent, useEffect, useState} from 'react';
 import hah from '../../assets/images/hah.svg'
 import {useAddCommentMutation} from '../../redux/features/opinions/opinionApi';
+import {toast} from 'sonner';
+import {TResponse} from '../../types';
+import {TComment} from '../../types/opinion.type';
 
 
 const CommentCard = ({opinion} : {opinion: any}) => {
   const [showComments, setShowComments] = useState(false)
   const [comment, setComment] = useState('')
+  const [commentArr, setCommentArr] = useState<string[]>([])
 
   const [addComment] = useAddCommentMutation()
 
-  const handleComment = (e : FormEvent) => {
+  const handleComment = async(e : FormEvent) => {
     e.preventDefault()
-    // const commentArr = Object.preventExtensions(opinion.comments)
-    // if(comment){
-    //   commentArr.push(comment)
-    // }
+    const id = opinion._id
+    setCommentArr(prev => [...prev, comment])
+    const toastId = toast.loading('Updating...')
 
-    const opinionWithAddedComment = {
-      id: opinion._id,
-      data: comment
+    const data = {...opinion, comments: commentArr}
+
+    try{
+      const commentData = {
+        id,
+        data
+      }
+
+      const res = await addComment(commentData) as TResponse<TComment>
+      console.log(res, 'res')
+
+      if(res?.error){
+        throw new Error(res?.error?.data?.message) 
+      }
+      toast.success('Successfully updated', {id: toastId, duration: 2000})
+      setComment('')
+    }catch(err : any){
+      toast.error(err?.message ? err?.message : 'Something went wrong', {id: toastId})
     }
-    console.log(opinionWithAddedComment, 'arr')
-
   }
+
+  useEffect(()=> {
+    setCommentArr([...opinion.comments])
+  }, [opinion.comments])
 
   return (
     <div className="border rounded-xl p-6 grid grid-cols-12 gap-3">

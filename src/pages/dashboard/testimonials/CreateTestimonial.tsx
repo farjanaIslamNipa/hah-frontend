@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { zodResolver } from "@hookform/resolvers/zod";
 import { FieldValues, useForm } from "react-hook-form";
-import { useCreateSupplyMutation } from "../../../redux/features/supply/supplyApi";
 import { toast } from "sonner";
-import {TResponse, TSupply} from "../../../types";
+import {TResponse, TTestimonial} from "../../../types";
 import {testimonialSchema} from "./zodTestimonialValidation";
 import {useAppSelector} from "../../../redux/hooks";
 import {currentUser, currentUsername} from "../../../redux/features/auth/authSlice";
+import {useAddTestimonialMutation} from "../../../redux/features/testimonials/testimonialApi";
 
 const CreateTestimonial = () => {
   const user = useAppSelector(currentUser)
@@ -18,13 +18,17 @@ const CreateTestimonial = () => {
     formState: { errors },
   } = useForm({ resolver: zodResolver(testimonialSchema) });
 
-  const [createSupply] = useCreateSupplyMutation();
+  const [addTestimonial] = useAddTestimonialMutation();
 
   const onSubmit = async (data: FieldValues) => {
     const toastId = toast.loading('Posting testimonial ...')
     try {
-      const res = await createSupply(data) as TResponse<TSupply>;
-      console.log(res)
+      const testimonialData = {
+        username,
+        email: user?.email,
+        ...data
+      }
+      const res = await addTestimonial(testimonialData) as TResponse<TTestimonial>;
       if(res?.error){
         throw new Error(res?.error?.data?.message) 
       }
@@ -44,16 +48,16 @@ const CreateTestimonial = () => {
               <label className="text-sm">Name/username</label>
               <br />
               <input
-                id="name"
-                {...register("name")}
+                id="username"
+                {...register("username")}
                 value={username as string}
                 type="text"
                 className="border border-gray-300 w-full py-2 px-4 rounded-md focus:outline-none focus:border-brand placeholder:text-sm capitalize"
                 placeholder="Enter title"
               />
-              {errors?.name && (
+              {errors?.username && (
                 <span className="text-xs text-red-500">
-                  {errors.name.message as string}
+                  {errors.username.message as string}
                 </span>
               )}
             </div>
@@ -70,6 +74,21 @@ const CreateTestimonial = () => {
               {errors?.email && (
                 <span className="text-xs text-red-500">
                   {errors.email.message as string}
+                </span>
+              )}
+            </div>
+            <div>
+              <label className="text-sm">Name/Organization Name</label>
+              <br />
+              <input
+                id="name"
+                {...register("name")}
+                type="text"
+                className="border border-gray-300 w-full py-2 px-4 rounded-md focus:outline-none focus:border-brand placeholder:text-sm" placeholder="Enter your name or organization name"
+              />
+              {errors?.name && (
+                <span className="text-xs text-red-500">
+                  {errors.name.message as string}
                 </span>
               )}
             </div>
@@ -95,7 +114,7 @@ const CreateTestimonial = () => {
               <textarea
                 {...register("testimonial")}
                 id="testimonial"
-                rows={4}
+                rows={3}
                 placeholder="Enter description"
                 className="border border-gray-300 w-full py-2 px-4 rounded-md focus:outline-none focus:border-brand placeholder:text-sm"
               ></textarea>

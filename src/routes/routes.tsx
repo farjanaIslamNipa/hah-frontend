@@ -15,6 +15,8 @@ import DonatePage from "../pages/donation/DonatePage";
 import DonorLeaderBoard from "../pages/donation/DonorLeaderBoard";
 import Community from "../pages/community/Community";
 import CreateTestimonial from "../pages/dashboard/testimonials/CreateTestimonial";
+import AboutUs from "../pages/AboutUs";
+import VolunteerSignUp from "../pages/volunteer/VolunteerSignUp";
 
 const router = createBrowserRouter([
   {
@@ -46,6 +48,14 @@ const router = createBrowserRouter([
       {
         path: "/community",
         element: <Community />,
+      },
+      {
+        path: "/volunteer",
+        element: <VolunteerSignUp />,
+      },
+      {
+        path: "/about-us",
+        element: <AboutUs />,
       },
     ],
   },

@@ -22,6 +22,30 @@ const Navbar = () => {
 
   return (
     <div className="bg-black md:bg-white shadow relative z-50">
+      <div className="bg-[#fde8e8]">
+        <div className="custom-container">
+          <div className=" flex justify-end">
+            <NavLink className="nav-item" to="/volunteer" end>
+              <span className="text-gray-500 hover:text-brand underline font-bold">Sign up as a volunteer</span>
+            </NavLink>
+            {
+              !token && 
+              <NavLink to="/login" className="nav-item flex items-center gap-1 ">
+                <img src={loginIcon} alt="Login" className="h-5" />
+                <span className="text-gray-600">Login</span>
+              </NavLink>
+            }
+
+            {
+              token && 
+              <button onClick={handleLogout} className="nav-item flex items-center gap-1 ">
+                <img src={logoutIcon} alt="Logout" className="h-4" />
+                <span className="text-gray-500 font-bold">Logout</span>
+              </button>
+            }
+          </div>
+        </div>
+      </div>
       <div className="custom-container py-2 bg-white ">
         <div className="">
           <nav className="flex justify-between items-center">
@@ -50,39 +74,26 @@ const Navbar = () => {
                 <div className="pl-5 pb-6 block md:hidden">
                   <img src={logo} alt="Logo" className="h-14" />
                 </div>
-                <NavLink to="/" className='nav-item' end>
-                  Home
-                </NavLink>
                 <NavLink to="/supplies" className="nav-item" end>
                   All Supplies
                 </NavLink>
-                {
-                  token && 
-                  <NavLink to="/dashboard" className="nav-item" end>
-                    Dashboard
-                  </NavLink>
-                }
+
                   <NavLink to="/leaderboard" className="nav-item" end>
                     Leaderboard
                   </NavLink>
                   <NavLink to="/community" className="nav-item" end>
                     Community
                   </NavLink>
+                  <NavLink to="/about-us" className="nav-item" end>
+                    About us
+                  </NavLink>
                 {
-                  !token && 
-                  <NavLink to="/login" className="nav-item flex items-center gap-1 ">
-                    <img src={loginIcon} alt="Login" className="h-5" />
-                    <span>Login</span>
+                  token && 
+                  <NavLink to="/dashboard" className="nav-item" end>
+                    Dashboard
                   </NavLink>
                 }
 
-                {
-                  token && 
-                  <button onClick={handleLogout} className="nav-item flex items-center gap-1 ">
-                    <img src={logoutIcon} alt="Logout" className="h-4" />
-                    <span>Logout</span>
-                  </button>
-                }
               </div>
             </div>
             <div className="block md:hidden">

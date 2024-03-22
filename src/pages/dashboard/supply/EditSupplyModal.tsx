@@ -35,7 +35,7 @@ const CustomModal = ({editModal, closeEditModal, itemId} : TEditModalProps) => {
         id,
         data
       }
-      console.log(updatedData, 'data')
+
       const res = await updateSupply(updatedData) as TResponse<TSupply>
 
       if(res?.error){

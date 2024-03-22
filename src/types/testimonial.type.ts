@@ -3,6 +3,7 @@ export type TTestimonialState = {
 }
 export type TTestimonial = {
   _id?: string;
+  name: string;
   username: string;
   email: string;
   address: string;
