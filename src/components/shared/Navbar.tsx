@@ -26,7 +26,7 @@ const Navbar = () => {
         <div className="custom-container">
           <div className=" flex justify-end">
             <NavLink className="nav-item" to="/volunteer" end>
-              <span className="text-gray-500 hover:text-brand underline font-bold">Sign up as a volunteer</span>
+              <span className="text-gray-500 hover:text-brand underline font-bold">Join as a volunteer</span>
             </NavLink>
             {
               !token && 

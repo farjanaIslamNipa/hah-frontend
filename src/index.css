@@ -231,3 +231,9 @@ textarea {
   background-size: cover;
   height: 250px;
 }
+.about-us-header-bg{
+  background-image: url('./assets/images/about-us-bg-1.jpg');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
