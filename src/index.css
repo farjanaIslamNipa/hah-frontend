@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+html{
+  scroll-behavior: smooth;
+}
+
 @layer base {
   a {
     transition: all 0.3s ease-in-out;
@@ -233,6 +237,12 @@ textarea {
 }
 .about-us-header-bg{
   background-image: url('./assets/images/about-us-bg-1.jpg');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+.our-volunteers-bg{
+  background-image: url('./assets/images/our-volunteer.jpg');
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
