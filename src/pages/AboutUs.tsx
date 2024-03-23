@@ -24,9 +24,9 @@ const AboutUs = () => {
         </div>
       </header>
       <main className='custom-container'>
-        <div className="my-14 grid grid-cols-2 gap-x-14">
+        <div className="my-6 lg:my-14 grid grid-cols-1 md:grid-cols-2 gap-x-6 lg:gap-x-14">
           <div>
-            <div className='h-[350px] w-full'>
+            <div className='h-[250px] lg:h-[350px] w-full'>
               <img src={ourMission} alt="Our Mission" className='h-full w-full object-cover' />
             </div>
             <div className="pt-5">
@@ -35,7 +35,7 @@ const AboutUs = () => {
             </div>
           </div>
           <div>
-          <div className='h-[350px] w-full'>
+          <div className='h-[250px] lg:h-[350px] w-full'>
               <img src={ourVision} alt="Our Vision" className='h-full w-full object-cover' />
             </div>
             <div className="pt-5">
@@ -44,8 +44,8 @@ const AboutUs = () => {
             </div>
           </div>
         </div>
-        <div className="my-14 our-volunteers-bg p-20">
-            <div className="bg-white max-w-[70%] mx-auto rounded-2xl shadow-md p-8">
+        <div className="my-8 sm:my-14 our-volunteers-bg p-5 sm:p-10 lg:p-20">
+            <div className="bg-white w-full lg:max-w-[90%] xl:max-w-[70%] mx-auto rounded-2xl shadow-md p-8">
               <h2 className="text-center font-bold text-3xl">Meet our volunteers</h2>
               <div className="overflow-x-auto relative mt-8">
                 <div className="overflow-x-auto relative shadow-md sm:rounded-lg">
@@ -71,7 +71,7 @@ const AboutUs = () => {
               </div>
             </div>
         </div>
-        <div className="my-14 mx-20 text-center">
+        <div className="my-14 mx-0 md:mx-20 text-center">
           <p>We invite you to join us in our mission to strengthen post-disaster community health and medical supply chains. Whether you're a healthcare provider, relief organization, or concerned individual, there's a role for you to play in building resilience and saving lives. Together, we can make a difference.</p>
           <div className="text-center mt-8">
             <Link to="/volunteer" className='btn-solid'>Join us as a volunteer</Link>

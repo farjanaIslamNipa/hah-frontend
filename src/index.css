@@ -222,12 +222,6 @@ textarea {
   height: 200px;
 }
 
-.donor-bg{
-  background-image: url('./assets/images/donor-bg.png');
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: contain;
-}
 .volunteer-bg{
   background-image: url('./assets/images/volunteer-1.png');
   background-repeat: no-repeat;

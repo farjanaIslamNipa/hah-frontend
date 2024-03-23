@@ -7,16 +7,8 @@ import {currentUser} from '../../redux/features/auth/authSlice';
 import {toast} from 'sonner';
 import {useGetDonationsQuery} from '../../redux/features/donations/donationApi';
 import {TDonation} from '../../types';
-import {useEffect, useState} from 'react';
 
 const DonorLeaderBoard = () => {
-  const [leaderBoard, setLeaderBoard] = useState([])
-  const {data, isError} = useGetDonationsQuery(undefined)
-
-  const donors : string[] = []
-  data?.donations.map((item : TDonation) => donors.push(item.email))
-
-
   const user = useAppSelector(currentUser)
   const navigate = useNavigate()
   const handleDonate = () => {
@@ -28,35 +20,24 @@ const DonorLeaderBoard = () => {
     }
   }
 
+  // Getting leader board data
+  const {data, isError} = useGetDonationsQuery(undefined)
 
-  const sortedLeaderBoard = () => {
-    const countMap : any = {};
-    donors.forEach(donor => {
-        countMap[donor] = (countMap[donor] || 0) + 1;
-    });
-    console.log(countMap, 'countMap')
-    const uniqueElements = [...new Set(donors)];
+  const donors : string[] = []
+  data?.donations.map((item : TDonation) => donors.push(item.email))
 
-    uniqueElements.sort((a, b) => {
-        return countMap[b] - countMap[a];
-    });
+  const countMap : any = {};
+  donors.forEach(donor => {
+      countMap[donor] = (countMap[donor] || 0) + 1;
+  });
 
-    const arr = []
-     for (const [key, value] of Object.entries(countMap)) {
-      const leader = {name: `${key}`, amount: `${value}` }
-      console.log(leader, 'arr')
-      arr.push(leader)
-    }
 
-    return arr;
-}
+  const leaderBoard = []
+   for (const [key, value] of Object.entries(countMap)) {
+    const leader = {email: `${key}`, amount: `${value}` }
+    leaderBoard.push(leader)
+  }
 
-console.log( sortedLeaderBoard(), 'll')
-useEffect(() => {
-  // sortedLeaderBoard()
-}, [])
-
-// console.log(leaderBoard, 'll')
 
   if (isError) {
     return <p className="p-5 font-bold text-brand text-center">Loading...</p>;
@@ -76,7 +57,7 @@ useEffect(() => {
       </div>
       <div className="mt-14">
         <h1 className="text-center text-2xl font-extrabold">Champions of Generosity: Donors Leaderboard</h1>
-        <div className="mt-10 donor-bg py-5">
+        <div className="mt-10 bg-secondary bg-opacity-20 py-10">
           <div className="max-w-[60%] mx-auto bg-white rounded-2xl p-10 shadow-lg">
           <div className="overflow-x-auto relative">
             <div className="overflow-x-auto relative shadow-md sm:rounded-lg">
@@ -84,42 +65,19 @@ useEffect(() => {
                 <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                 <tr>
                     <th scope="col" className="py-3 px-6">Position</th>
-                    <th scope="col" className="py-3 px-6">Name</th>
-                    <th scope="col" className="py-3 px-6">Category</th>
-                    <th scope="col" className="py-3 px-6">Amount</th>
+                    <th scope="col" className="py-3 px-6">Email</th>
+                    <th scope="col" className="py-3 px-6 text-center">Donate count</th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                    <td className="py-4 px-6">Alex Johnson</td>
-                    <td className="py-4 px-6">82926417</td>
-                    <td className="py-4 px-6">$4,500.00</td>
-                    <td className="py-4 px-6">Yes</td>
-                </tr>
-                <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                    <td className="py-4 px-6">Maria Garcia</td>
-                    <td className="py-4 px-6">55387621</td>
-                    <td className="py-4 px-6">$3,150.00</td>
-                    <td className="py-4 px-6">No</td>
-                </tr>
-                <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                    <td className="py-4 px-6">James Smith</td>
-                    <td className="py-4 px-6">90817264</td>
-                    <td className="py-4 px-6">$7,820.00</td>
-                    <td className="py-4 px-6">Yes</td>
-                </tr>
-                <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                    <td className="py-4 px-6">Patricia Brown</td>
-                    <td className="py-4 px-6">26483910</td>
-                    <td className="py-4 px-6">$1,230.00</td>
-                    <td className="py-4 px-6">Yes</td>
-                </tr>
-                <tr className="bg-white dark:bg-gray-800">
-                    <td className="py-4 px-6">Ethan Davis</td>
-                    <td className="py-4 px-6">64738290</td>
-                    <td className="py-4 px-6">$865.00</td>
-                    <td className="py-4 px-6">No</td>
-                </tr>
+                  {
+                    leaderBoard?.map((leader, index) => <tr key={leader.email} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                    <td className="py-4 px-6">{index + 1}</td>
+                    <td className="py-4 px-6">{leader?.email}</td>
+                    <td className="py-4 px-6 text-center">{leader?.amount} {Number(leader?.amount) < 2 ? 'Time' : 'Times'}</td>
+                </tr>)
+                  }
+
                 </tbody>
             </table>
             </div>
