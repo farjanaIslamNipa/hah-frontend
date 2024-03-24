@@ -9,10 +9,8 @@ import logoutIcon from "../../assets/images/logout.svg";
 import {useAppDispatch, useAppSelector} from "../../redux/hooks";
 import {currentToken, logoutUser} from "../../redux/features/auth/authSlice";
 import {toast} from "sonner";
-import sun from '../../assets/images/sun.svg'
-import moon from '../../assets/images/moon.svg'
-import useTheme from "../../context/theme";
 import volunteerIcon from '../../assets/images/volunteer.svg'
+import ThemeButton from "../ui/ThemeButton";
 
 const Navbar = () => {
   const [expand, setExpand] = useState(false);
@@ -24,37 +22,23 @@ const Navbar = () => {
     toast.success('Logout successfully', {duration: 2000})
   }
 
-  const {themeMode, lightTheme, darkTheme} = useTheme()
-  const onChangeTheme = () => {
-    if(themeMode === 'dark'){
-      lightTheme()
-    }else {
-      darkTheme()
-    }
-  }
+
   return (
     <div className="bg-black md:bg-white dark:bg-gray-900 shadow relative z-50">
       <div className="bg-[#DFFCF1] dark:bg-[#96e9e4] relative py-1">
         <div className="custom-container">
           <div className=" flex justify-end items-center gap-3">
             {/* Theme switch button */}
-          <div>
-            <input onChange={onChangeTheme} checked={themeMode === 'dark'} type="checkbox" className="checkbox absolute opacity-0 top-0" id="checkbox" />
-              <label htmlFor="checkbox" className="cursor-pointer flex justify-between items-center gap-1 bg-gray-400 dark:bg-gray-700 pl-[3px] pr-[5px] py-[2px] relative rounded-full label">
-                <img src={sun} alt="Light mode" className="h-6 w-6" />
-                <img src={moon} alt="dark mode" className="h-5 w-5" />
-                <div className='ball w-[22px] h-[22px] bg-gray-50 shadow-sm absolute top-[3px] left-[4px] rounded-full transition-transform delay-100 duration-200 ease-out'></div>
-              </label>
-            </div>
-            <NavLink className="nav-item flex items-center gap-2" to="/volunteer" end>
+            <ThemeButton />
+            <NavLink className="flex items-center gap-2" to="/volunteer" end>
               <img src={volunteerIcon} alt="Login" className="h-5" />
               <span className="text-gray-500 hover:text-brand font-bold">Join as a volunteer</span>
             </NavLink>
             {
               !token && 
-              <NavLink to="/login" className="nav-item flex items-center gap-1">
+              <NavLink to="/login" className="flex items-center gap-1">
                 <img src={loginIcon} alt="Login" className="h-5" />
-                <span className="text-gray-600">Login</span>
+                <span className="text-gray-600 font-bold">Login</span>
               </NavLink>
             }
 

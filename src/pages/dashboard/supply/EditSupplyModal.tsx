@@ -58,10 +58,10 @@ const CustomModal = ({editModal, closeEditModal, itemId} : TEditModalProps) => {
   return (
 
     <div className={cn("flex justify-center items-center fixed inset-0 bg-gray-500/70 invisible z-[999]",{visible: editModal})}>
-      <div className="custom-modal bg-white w-full max-w-[600px] max-h-[90vh] overflow-auto p-5 rounded-lg">
+      <div className="custom-modal bg-white dark:bg-gray-800 w-full max-w-[600px] max-h-[90vh] overflow-auto p-5 rounded-lg">
         <div className="flex justify-between relative z-50">
         <h1 className="font-semibold text-lg">Update Supply</h1>
-          <button onClick={closeEditModal}>
+          <button onClick={closeEditModal} className="bg-white dark:bg-brand rounded-md px-1">
             <img src={closeIcon} alt="Close modal" />
           </button>
         </div>
@@ -75,7 +75,7 @@ const CustomModal = ({editModal, closeEditModal, itemId} : TEditModalProps) => {
                 {...register("title")}
                 defaultValue={supply?.data?.title}
                 type="text"
-                className="border border-gray-300 w-full py-2 px-4 rounded-md focus:outline-none focus:border-brand placeholder:text-sm capitalize"
+                className="custom-input"
                 placeholder="Enter title"
               />
               {errors?.title && (
@@ -90,7 +90,7 @@ const CustomModal = ({editModal, closeEditModal, itemId} : TEditModalProps) => {
               <select
                 id="category"
                 {...register("category")}
-                className="border border-gray-300 w-full py-2 px-4 rounded-md focus:outline-none focus:border-brand text-sm"
+                className="custom-input"
               >
                 <option>Select Category</option>
                 <option
@@ -126,7 +126,7 @@ const CustomModal = ({editModal, closeEditModal, itemId} : TEditModalProps) => {
                 id="quantity"
                 {...register("quantity")}
                 type="text"
-                className="border border-gray-300 w-full py-2 px-4 rounded-md focus:outline-none focus:border-brand placeholder:text-sm"
+                className="custom-input"
                 placeholder="Enter quantity"
               />
               {errors?.quantity && (
@@ -143,7 +143,7 @@ const CustomModal = ({editModal, closeEditModal, itemId} : TEditModalProps) => {
                 id="img"
                 {...register("img")}
                 type="text"
-                className="border border-gray-300 w-full py-2 px-4 rounded-md focus:outline-none focus:border-brand placeholder:text-sm"
+                className="custom-input"
                 placeholder="ex: https://i.ibb.co/T2fgj6m/event-item-1.png"
               />
             </div>
@@ -155,7 +155,7 @@ const CustomModal = ({editModal, closeEditModal, itemId} : TEditModalProps) => {
                 id="description"
                 rows={2}
                 defaultValue={supply?.data?.description}
-                className="border border-gray-300 w-full py-2 px-4 rounded-md focus:outline-none focus:border-brand placeholder:text-sm"
+                className="custom-input"
               ></textarea>
             </div>
             <div className="flex justify-end">

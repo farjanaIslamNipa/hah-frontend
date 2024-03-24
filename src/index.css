@@ -76,7 +76,7 @@ textarea {
 }
 
 .custom-input {
-  @apply border border-gray-300 rounded-md w-full py-2 px-4 placeholder:text-sm focus:border-brand focus:shadow-lg;
+  @apply border border-gray-300 dark:border-gray-800 bg-white dark:bg-gray-700 rounded-md w-full py-2 px-4 placeholder:text-sm focus:border-brand focus:shadow-lg;
 }
 
 .slideshow li span {
@@ -164,7 +164,7 @@ textarea {
   @apply w-full flex items-center gap-x-3 flex-wrap select-none border-b text-sm font-semibold;
 }
 .content {
-  @apply peer-checked:max-h-max max-h-0 basis-full peer-checked:border-y-[1px] bg-gray-200 peer-checked:p-3 overflow-hidden transition-all select-text;
+  @apply peer-checked:max-h-max max-h-0 basis-full peer-checked:border-y-[1px] bg-gray-200 dark:bg-gray-600 peer-checked:p-3 overflow-hidden transition-all select-text;
 }
 
 .supply-header-bg {
@@ -192,9 +192,11 @@ textarea {
   left: 0;
   right: 0;
   margin: 40px auto;
-  background-color: white;
   border-radius: 20px;
   padding: 20px;
+}
+.Modal{
+  @apply bg-white dark:bg-gray-800
 }
 
 @media(max-width: 786px){
@@ -251,4 +253,11 @@ textarea {
 }
 .swiper-pagination-bullet-active{
   background: #05d1c4 !important;
+}
+
+.leader-board-bg{
+  background-image: url('./assets/images/leaderboard-bg.jpg');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
 }

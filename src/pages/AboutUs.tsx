@@ -45,7 +45,7 @@ const AboutUs = () => {
           </div>
         </div>
         <div className="my-8 sm:my-14 our-volunteers-bg p-5 sm:p-10 lg:p-20">
-            <div className="bg-white w-full lg:max-w-[90%] xl:max-w-[70%] mx-auto rounded-2xl shadow-md p-8">
+            <div className="bg-white dark:bg-gray-800 w-full lg:max-w-[90%] xl:max-w-[70%] mx-auto rounded-2xl shadow-md p-8">
               <h2 className="text-center font-bold text-3xl">Meet our volunteers</h2>
               <div className="overflow-x-auto relative mt-8">
                 <div className="overflow-x-auto relative shadow-md sm:rounded-lg">

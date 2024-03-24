@@ -43,25 +43,26 @@ const DonorLeaderBoard = () => {
     return <p className="p-5 font-bold text-brand text-center">Loading...</p>;
   }
   return (
-    <div className='custom-container py-10'>
-      <div className="grid grid-cols-12">
-        <div className='col-span-4'>
-          <img src={leaderImg} className='h-[300px] w-auto rounded-xl' alt="Donor Leaders" />
-        </div>
-        <div className='col-span-8 space-y-4'>
-          <p>Your generosity serves as a beacon of hope during these challenging times. Your contribution will not only aid in our mission to provide essential care to those in need but will also play a crucial role in saving lives and alleviating suffering.</p>
-          <p>In times like these, the importance of community support cannot be overstated. Your willingness to lend a helping hand reflects the true spirit of compassion and solidarity that binds us together as a community.</p>
-          <p className="my-4 font-semibold text-red-700 text-[18px]">Would you like to contribute a donation to support our cause ?</p>
-          <Button onClick={handleDonate}>Donate Now</Button>
+    <>
+      <div className='custom-container py-10'>
+        <div className="grid grid-cols-12 pb-5">
+          <div className='col-span-4'>
+            <img src={leaderImg} className='h-[300px] w-auto rounded-xl' alt="Donor Leaders" />
+          </div>
+          <div className='col-span-8 space-y-4'>
+            <p>Your generosity serves as a beacon of hope during these challenging times. Your contribution will not only aid in our mission to provide essential care to those in need but will also play a crucial role in saving lives and alleviating suffering.</p>
+            <p>In times like these, the importance of community support cannot be overstated. Your willingness to lend a helping hand reflects the true spirit of compassion and solidarity that binds us together as a community.</p>
+            <p className="my-4 font-semibold text-red-700 text-[18px]">Would you like to contribute a donation to support our cause ?</p>
+            <Button onClick={handleDonate}>Donate Now</Button>
+          </div>
         </div>
       </div>
-      <div className="mt-14">
-        <h1 className="text-center text-2xl font-extrabold">Champions of Generosity: Donors Leaderboard</h1>
-        <div className="mt-10 bg-secondary bg-opacity-20 py-10">
-          <div className="max-w-[60%] mx-auto bg-white rounded-2xl p-10 shadow-lg">
+      <div className="leader-board-bg pt-14 pb-20">
+        <h1 className="text-center text-white text-2xl font-extrabold pb-8">Champions of Generosity: Donors Leaderboard</h1>
+        <div className="max-w-[60%] mx-auto bg-white dark:bg-gray-900 rounded-2xl p-10 shadow-lg">
           <div className="overflow-x-auto relative">
             <div className="overflow-x-auto relative shadow-md sm:rounded-lg">
-            <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+              <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                 <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                 <tr>
                     <th scope="col" className="py-3 px-6">Position</th>
@@ -79,14 +80,12 @@ const DonorLeaderBoard = () => {
                   }
 
                 </tbody>
-            </table>
+              </table>
             </div>
-          </div>
-    
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

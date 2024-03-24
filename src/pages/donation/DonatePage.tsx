@@ -46,12 +46,12 @@ const DonatePage = () => {
     return <p className="p-5 font-bold text-brand text-center">Loading...</p>;
   }
   return (
-    <>
+    <div className="bg-white dark:bg-gray-800">
       <header className="donate-page-bg flex justify-center items-center">
         <h1 className="font-extrabold text-3xl md:text-5xl text-white">Donate to Nonprofits</h1>
       </header>
-      <div className="my-20 custom-container">
-        <div className="max-w-[700px] mx-auto p-8 rounded-xl shadow-lg border">
+      <div className="py-20 custom-container">
+        <div className="max-w-[700px] mx-auto p-8 rounded-xl shadow-lg border border-gray-300 dark:border-gray-800 bg-white dark:bg-gray-900">
            <p className="font-bold text-xl">Donate Now</p>
            <form onSubmit={handleSubmit(onSubmit)} className="space-y-5 mt-4">
             <div>
@@ -62,7 +62,7 @@ const DonatePage = () => {
                 defaultValue={donor?.name}
                 type="text"
                 readOnly
-                className="border border-gray-300 w-full py-2 px-4 rounded-md focus:outline-none focus:border-brand "
+                className="custom-input"
               />
             </div>
             <div>
@@ -73,7 +73,7 @@ const DonatePage = () => {
                 defaultValue={donor?.email}
                 type="text"
                 readOnly
-                className="border border-gray-300 w-full py-2 px-4 rounded-md focus:outline-none focus:border-brand "
+                className="custom-input"
               />
             </div>
             <div>
@@ -83,7 +83,7 @@ const DonatePage = () => {
                 id="title"
                 {...register("title")}
                 type="text"
-                className="border border-gray-300 w-full py-2 px-4 rounded-md focus:outline-none focus:border-brand placeholder:text-sm capitalize"
+                className="custom-input"
                 placeholder="Enter title"
               />
               {errors?.title && (
@@ -98,7 +98,7 @@ const DonatePage = () => {
               <select
                 id="category"
                 {...register("category")}
-                className="border border-gray-300 w-full py-2 px-4 rounded-md focus:outline-none focus:border-brand text-sm"
+                className="custom-input"
               >
                 <option>Select Category</option>
                 <option value="Medical Supplies">Medical Supplies</option>
@@ -118,7 +118,7 @@ const DonatePage = () => {
                 id="quantity"
                 {...register("quantity")}
                 type="text"
-                className="border border-gray-300 w-full py-2 px-4 rounded-md focus:outline-none focus:border-brand placeholder:text-sm"
+                className="custom-input"
                 placeholder="Enter quantity"
               />
               {errors?.quantity && (
@@ -135,7 +135,7 @@ const DonatePage = () => {
                 id="description"
                 rows={2}
                 placeholder="Enter description"
-                className="border border-gray-300 w-full py-2 px-4 rounded-md focus:outline-none focus:border-brand placeholder:text-sm"
+                className="custom-input"
               ></textarea>
             </div>
             <div className="flex justify-end">
@@ -147,7 +147,7 @@ const DonatePage = () => {
         </div>
         <DonateModal donateModal={donateModal} donationInfo={donationInfo} closeDonateModal={closeDonateModal} />
       </div>
-    </>
+    </div>
   );
 };
 

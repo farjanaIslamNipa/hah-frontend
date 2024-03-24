@@ -39,8 +39,8 @@ const CreateTestimonial = () => {
     }
   };
   return (
-    <div className="px-4 sm:px-10 mt-10">
-      <div className="bg-white w-full max-w-[100%] lg:max-w-[80%] border border-gray-200 shadow-md rounded-lg py-5 sm:py-8 px-4 sm:px-14">
+    <div className="px-4 sm:px-10 py-10">
+      <div className="bg-white dark:bg-gray-800 w-full max-w-[100%] lg:max-w-[80%] border border-gray-200 dark:border-gray-800 shadow-md rounded-lg py-5 sm:py-8 px-4 sm:px-14">
         <h5 className="text-lg font-medium mb-4">Add Testimonial</h5>
         <div className="mt-6">
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
@@ -52,7 +52,7 @@ const CreateTestimonial = () => {
                 {...register("username")}
                 value={username as string}
                 type="text"
-                className="border border-gray-300 w-full py-2 px-4 rounded-md focus:outline-none focus:border-brand placeholder:text-sm capitalize"
+                className="custom-input"
                 placeholder="Enter title"
               />
               {errors?.username && (
@@ -69,7 +69,7 @@ const CreateTestimonial = () => {
                 {...register("email")}
                 value={user?.email}
                 type="text"
-                className="border border-gray-300 w-full py-2 px-4 rounded-md focus:outline-none focus:border-brand placeholder:text-sm"
+                className="custom-input"
               />
               {errors?.email && (
                 <span className="text-xs text-red-500">
@@ -84,7 +84,7 @@ const CreateTestimonial = () => {
                 id="name"
                 {...register("name")}
                 type="text"
-                className="border border-gray-300 w-full py-2 px-4 rounded-md focus:outline-none focus:border-brand placeholder:text-sm" placeholder="Enter your name or organization name"
+                className="custom-input" placeholder="Enter your name or organization name"
               />
               {errors?.name && (
                 <span className="text-xs text-red-500">
@@ -99,7 +99,7 @@ const CreateTestimonial = () => {
                 id="address"
                 {...register("address")}
                 type="text"
-                className="border border-gray-300 w-full py-2 px-4 rounded-md focus:outline-none focus:border-brand placeholder:text-sm"
+                className="custom-input"
                 placeholder="Enter Address"
               />
               {errors?.address && (
@@ -116,7 +116,7 @@ const CreateTestimonial = () => {
                 id="testimonial"
                 rows={3}
                 placeholder="Enter description"
-                className="border border-gray-300 w-full py-2 px-4 rounded-md focus:outline-none focus:border-brand placeholder:text-sm"
+                className="custom-input"
               ></textarea>
               {errors?.testimonial && (
                 <span className="text-xs text-red-500">

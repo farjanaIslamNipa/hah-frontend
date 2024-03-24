@@ -31,8 +31,8 @@ const CreateSupply = () => {
     }
   };
   return (
-    <div className="px-4 sm:px-10 mt-10">
-      <div className="bg-white w-full max-w-[100%] lg:max-w-[80%] border border-gray-200 shadow-md rounded-lg py-5 sm:py-8 px-4 sm:px-14">
+    <div className="px-4 sm:px-10 py-10">
+      <div className="bg-white dark:bg-gray-800 w-full max-w-[100%] lg:max-w-[80%] border border-gray-200 dark:border-gray-800 shadow-md rounded-lg py-5 sm:py-8 px-4 sm:px-14">
         <h5 className="text-lg font-medium mb-4">Create new supply</h5>
         <div className="mt-6">
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
@@ -43,7 +43,7 @@ const CreateSupply = () => {
                 id="title"
                 {...register("title")}
                 type="text"
-                className="border border-gray-300 w-full py-2 px-4 rounded-md focus:outline-none focus:border-brand placeholder:text-sm capitalize"
+                className="custom-input"
                 placeholder="Enter title"
               />
               {errors?.title && (
@@ -58,7 +58,7 @@ const CreateSupply = () => {
               <select
                 id="category"
                 {...register("category")}
-                className="border border-gray-300 w-full py-2 px-4 rounded-md focus:outline-none focus:border-brand text-sm"
+                className="custom-input"
               >
                 <option>Select Category</option>
                 <option value="Medical Supplies">Medical Supplies</option>
@@ -78,7 +78,7 @@ const CreateSupply = () => {
                 id="quantity"
                 {...register("quantity")}
                 type="text"
-                className="border border-gray-300 w-full py-2 px-4 rounded-md focus:outline-none focus:border-brand placeholder:text-sm"
+                className="custom-input"
                 placeholder="Enter quantity"
               />
               {errors?.quantity && (
@@ -94,7 +94,7 @@ const CreateSupply = () => {
                 id="img"
                 {...register("img")}
                 type="text"
-                className="border border-gray-300 w-full py-2 px-4 rounded-md focus:outline-none focus:border-brand placeholder:text-sm"
+                className="custom-input"
                 placeholder="ex: https://i.ibb.co/T2fgj6m/event-item-1.png"
               />
             </div>
@@ -106,7 +106,7 @@ const CreateSupply = () => {
                 id="description"
                 rows={4}
                 placeholder="Enter description"
-                className="border border-gray-300 w-full py-2 px-4 rounded-md focus:outline-none focus:border-brand placeholder:text-sm"
+                className="custom-input"
               ></textarea>
             </div>
             <div className="flex justify-end">

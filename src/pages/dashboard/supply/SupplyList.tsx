@@ -56,9 +56,9 @@ const SupplyList = () => {
   }
  
   return (
-    <div className="px-4 sm:px-10 pb-14">
-      <div className="flex items-center justify-between mt-5">
-        <h5 className="font-semibold text-xl text-gray-700">Supply List</h5>
+    <div className="px-4 sm:px-10 pb-14 pt-5">
+      <div className="flex items-center justify-between">
+        <h5 className="font-semibold text-xl text-gray-700 dark:text-gray-400">Supply List</h5>
         <NavLink to="/dashboard/create-supply" className="btn-solid text-sm">
           Create Supply
         </NavLink>
@@ -123,10 +123,10 @@ const SupplyList = () => {
                   </td>
                   <td className="px-4 py-4">
                     <div className="flex gap-4 items-end justify-end">
-                      <button onClick={() => openEditModal(supply._id)} className=" py-2">
+                      <button onClick={() => openEditModal(supply._id)} className=" py-1 px-1 rounded-md bg-gray-100">
                         <img src={editIcon} alt="" className="h-5 w-5" />
                       </button>
-                      <button onClick={() => openDeleteModal(supply._id)} className=" py-2">
+                      <button onClick={() => openDeleteModal(supply._id)} className=" py-1 px-1 rounded-md bg-gray-100">
                         <img src={deleteIcon} alt="" className="h-5 w-5" />
                       </button>
                     </div>

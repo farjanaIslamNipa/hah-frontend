@@ -56,7 +56,7 @@ const CommunityHeader = ({userInfo} : {userInfo: TUserInfo}) => {
         <p className="my-4 font-semibold text-brand text-[18px]">We're eager to hear your perspective! Share your thoughts with us</p>
         <div className="mt-4">
           <form onSubmit={(e) => handleOpinion(e)}>
-            <textarea ref={opinionRef} defaultValue={opinion} onChange={(e) => setOpinion(e.target.value)} name="opinion" id="opinion" rows={3} placeholder='Share your thoughts' className="border border-gray-300 w-full py-2 px-4 rounded-md focus:outline-none focus:border-brand placeholder:text-sm" ></textarea>
+            <textarea ref={opinionRef} defaultValue={opinion} onChange={(e) => setOpinion(e.target.value)} name="opinion" id="opinion" rows={3} placeholder='Share your thoughts' className="border border-gray-300 dark:border-brand w-full py-2 px-4 rounded-md focus:outline-none focus:border-brand placeholder:text-sm bg-whit dark:bg-gray-800" ></textarea>
             <div className='text-end'>
               <Button type='submit'>Publish your opinion</Button>
             </div>
