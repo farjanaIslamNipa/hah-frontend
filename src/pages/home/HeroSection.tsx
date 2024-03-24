@@ -23,8 +23,8 @@ const HeroSection = () => {
             </h1>
           </div>
         </div>
-        <div className="relative bg-brand bg-opacity-10 hidden md:block">
-          <ul className="slideshow border">
+        <div className="relative bg-[#DFFCF1] dark:bg-gray-800 hidden md:block">
+          <ul className="slideshow">
             <li>
               <span>
                 <img src={slide1} alt="" />

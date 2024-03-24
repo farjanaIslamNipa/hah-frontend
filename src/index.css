@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+*{
+  transition: all 0.3s ease;
+}
+
 html{
   scroll-behavior: smooth;
 }
@@ -240,4 +244,8 @@ textarea {
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
+}
+
+.checkbox:checked + .label .ball{
+  transform: translateX(27px);
 }

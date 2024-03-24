@@ -9,6 +9,9 @@ import logoutIcon from "../../assets/images/logout.svg";
 import {useAppDispatch, useAppSelector} from "../../redux/hooks";
 import {currentToken, logoutUser} from "../../redux/features/auth/authSlice";
 import {toast} from "sonner";
+import sun from '../../assets/images/sun.svg'
+import moon from '../../assets/images/moon.svg'
+import useTheme from "../../context/theme";
 
 const Navbar = () => {
   const [expand, setExpand] = useState(false);
@@ -20,11 +23,27 @@ const Navbar = () => {
     toast.success('Logout successfully', {duration: 2000})
   }
 
+  const {themeMode, lightTheme, darkTheme} = useTheme()
+  const onChangeTheme = () => {
+    if(themeMode === 'dark'){
+      lightTheme()
+    }else {
+      darkTheme()
+    }
+  }
   return (
-    <div className="bg-black md:bg-white shadow relative z-50">
-      <div className="bg-[#fde8e8]">
+    <div className="bg-black md:bg-white dark:bg-gray-900 shadow relative z-50">
+      <div className="bg-[#DFFCF1] dark:bg-[#96e9e4] relative py-1">
         <div className="custom-container">
-          <div className=" flex justify-end">
+          <div className=" flex justify-end items-center gap-3">
+          <div>
+            <input onChange={onChangeTheme} checked={themeMode === 'dark'} type="checkbox" className="checkbox absolute opacity-0 top-0" id="checkbox" />
+              <label htmlFor="checkbox" className="cursor-pointer flex justify-between items-center gap-1 bg-gray-400 pl-[3px] pr-[5px] py-[2px] relative rounded-full label">
+                <img src={sun} alt="Light mode" className="h-6 w-6" />
+                <img src={moon} alt="dark mode" className="h-5 w-5" />
+                <div className='ball w-[22px] h-[22px] bg-gray-50 shadow-sm absolute top-[3px] left-[4px] rounded-full transition-transform delay-100 duration-200 ease-out'></div>
+              </label>
+            </div>
             <NavLink className="nav-item" to="/volunteer" end>
               <span className="text-gray-500 hover:text-brand underline font-bold">Join as a volunteer</span>
             </NavLink>
@@ -38,7 +57,7 @@ const Navbar = () => {
 
             {
               token && 
-              <button onClick={handleLogout} className="nav-item flex items-center gap-1 ">
+              <button onClick={handleLogout} className=" flex items-center gap-1 ">
                 <img src={logoutIcon} alt="Logout" className="h-4" />
                 <span className="text-gray-500 font-bold">Logout</span>
               </button>
@@ -46,7 +65,7 @@ const Navbar = () => {
           </div>
         </div>
       </div>
-      <div className="custom-container py-2 bg-white ">
+      <div className="custom-container py-2 bg-white dark:bg-gray-900">
         <div className="">
           <nav className="flex justify-between items-center">
             <div>
@@ -60,7 +79,7 @@ const Navbar = () => {
                 { "w-full": expand }
               )}
             >
-              <div className="flex flex-col md:flex-row items-start md:items-center gap-2 pt-4 md:pt-0 w-[70%] md:w-full bg-white h-screen md:h-auto">
+              <div className="flex flex-col md:flex-row items-start md:items-center gap-2 pt-4 md:pt-0 w-[70%] md:w-full bg-white dark:bg-gray-900 h-screen md:h-auto">
                 {expand && (
                   <div className="absolute right-6 top-5 block md:hidden">
                     <button
