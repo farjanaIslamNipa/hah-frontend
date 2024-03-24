@@ -57,7 +57,7 @@ const Navbar = () => {
           <nav className="flex justify-between items-center">
             <div>
               <NavLink to="/" end>
-                <img src={logo} alt="Logo" className="h lg:h-16" />
+                <img src={logo} alt="Logo" className="h-14 lg:h-16" />
               </NavLink>
             </div>
             <div

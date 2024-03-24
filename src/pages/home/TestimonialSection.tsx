@@ -1,5 +1,8 @@
 import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay } from "swiper/modules";
 import "swiper/css";
+import "swiper/css/autoplay";
+import "swiper/css/navigation";
 import SwiperBtnNext from "../../components/SwiperBtnNext";
 import SwiperBtnPrev from "../../components/SwiperBtnPrev";
 import quoteTop from "../../assets/images/home/qoute-top.svg";
@@ -13,7 +16,10 @@ import {fadeIn} from "../../variants";
 import {useGetTestimonialsQuery} from "../../redux/features/testimonials/testimonialApi";
 import {TTestimonial} from "../../types";
 
+
 const TestimonialSection = () => {
+
+  
   const {data, isError } = useGetTestimonialsQuery(undefined)
 
   if (isError) {
@@ -40,7 +46,17 @@ const TestimonialSection = () => {
           <div
           className="col-span-12 lg:col-span-8 xl:col-span-7">
             <div className="bg-white dark:bg-gray-800 bg-opacity-100 dark:bg-opacity-45 p-0 sm:p-8 relative">
-              <Swiper spaceBetween={30} slidesPerView={1} loop={true}>
+              <Swiper 
+              parallax={true}
+              observer={true}
+              observeParents={true}
+              autoplay={{
+                delay: 2500,
+                disableOnInteraction: false,
+              }}
+              loop={true}
+              modules={[Autoplay]}
+              >
                 <div className="absolute z-50 bottom-8 sm:bottom-0 right-[80px] sm:right-[88px] visible">
                   <SwiperBtnNext className="h-9 w-9 shadow-md flex justify-center items-center bg-secondary transition-all delay-100 ease-in-out">
                     <img src={arrowNext} alt="Next" />

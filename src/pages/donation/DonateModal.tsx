@@ -53,8 +53,8 @@ const DonateModal = ({
           <img src={closeIcon} alt="Close modal" />
         </button>
       </div>
-      <div className="bg-brand bg-opacity-5 rounded-lg w-full p-8 mt-2 flex justify-center">
-        <div className="">
+      <div className="bg-brand bg-opacity-5 dark:bg-opacity-15 rounded-lg w-full p-8 mt-2 flex justify-center">
+        <div className="text-gray-800 dark:text-gray-400">
           <div className="flex">
             <div className="space-y-2">
               <p className="font-bold">Name:</p>
