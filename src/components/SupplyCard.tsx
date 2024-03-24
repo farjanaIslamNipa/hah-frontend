@@ -8,16 +8,15 @@ const SupplyCard = ({ supply }: { supply: TSupply }) => {
   const navigate = useNavigate()
 
   return (
-    <div
-      className="p-4 rounded-md cursor-pointer hover:shadow-lg transition-all ease-out duration-500 relative"
+    <div className="p-4 rounded-md cursor-pointer hover:shadow-lg transition-all ease-out duration-500 relative bg-white dark:bg-black dark:bg-opacity-25"
     >
-      <div className="flex justify-center items-end">
-        <div className="h-[250px] w-auto">
+      <div className="flex justify-center items-end rounded-xl bg-white">
+        <div className="h-[250px] w-auto rounded-xl">
           {
             (supply?.img && isValidURL(supply?.img))? <img
             src={supply?.img}
             alt=""
-            className="h-full w-full object-cover"
+            className="h-full w-full object-cover rounded-xl"
           />
 
           :
@@ -40,7 +39,7 @@ const SupplyCard = ({ supply }: { supply: TSupply }) => {
         <b>Quantity:</b> {supply?.quantity}
       </p>
       <div className="py-6">
-        <Button onClick={() => navigate(`/supplies/${supply?._id}`)} variant="outline" className="text-sm absolute bottom-4">
+        <Button onClick={() => navigate(`/supplies/${supply?._id}`)} variant="outline" className="text-sm absolute bottom-4 bg-white dark:bg-brand dark:text-white">
           View Details
         </Button>
       </div>

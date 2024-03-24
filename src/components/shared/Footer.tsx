@@ -6,7 +6,7 @@ import instagram from "../../assets/images/instagram.svg";
 const Footer = () => {
   return (
     <div>
-      <div className="bg-gray-200 pt-10 sm:pt-14 pb-5 sm:pb-10 lg:pb-14">
+      <div className="bg-gray-200 dark:bg-gray-600 pt-10 sm:pt-14 pb-5 sm:pb-10 lg:pb-14">
         <div className="custom-container">
           <div className="block sm:flex items-center gap-6 lg:gap-10">
             <div className="mb-5 sm:mb-0">
@@ -17,28 +17,24 @@ const Footer = () => {
                 <div className="border-b border-gray-500 pb-6 lg:pb-10">
                   <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                     <div className="flex justify-start md:justify-center">
-                      <NavLink
-                        to="/supplies"
-                        className="font-semibold px-4 py-2"
-                      >
-                        All <br /> Supplies
-                      </NavLink>
+                      <div>
+                        <NavLink to="/supplies" className="font-semibold px-4 py-1 block">All Supplies</NavLink>
+                        <NavLink to="/leaderboard" className="font-semibold px-4 py-1 block">Leaderboard</NavLink>
+                      </div>
                     </div>
                     <div className="border-x-none md:border-x border-gray-500 flex justify-start md:justify-center">
-                      <NavLink
-                        to="/privacy-policy"
-                        className="font-semibold px-4 py-2"
-                      >
-                        Privacy <br /> Policy
-                      </NavLink>
+                      <div>
+                        <NavLink to="/community" className="font-semibold px-4 py-1 block">Community</NavLink>
+                        <NavLink to="/about-us" className="font-semibold px-4 py-1 block">About us</NavLink>
+                      </div>
                     </div>
                     <div className="border-r-none md:border-r border-gray-500 flex justify-start md:justify-center">
-                      <NavLink
-                        to="/privacy-policy"
-                        className="font-semibold px-4 py-2"
-                      >
-                        Terms & <br /> Conditions
-                      </NavLink>
+                      <div>
+                        <NavLink to="/privacy-policy" className="font-semibold px-4 py-1 block">
+                          Terms & Conditions
+                        </NavLink>
+                        <NavLink to="/privacy-policy" className="font-semibold px-4 py-1 block">Privacy Policy</NavLink>
+                      </div>
                     </div>
                     <div className="flex justify-start md:justify-center items-center gap-2">
                       <a href="">
@@ -51,7 +47,7 @@ const Footer = () => {
                         <img
                           src={instagram}
                           alt="Instagram"
-                          className="h-8 ml-[2px]"
+                          className="h-[30px] ml-[2px]"
                         />
                       </a>
                     </div>

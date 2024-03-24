@@ -36,7 +36,7 @@ const TestimonialSection = () => {
           whileInView={"show"}
           viewport={{once: false, amount: 0.7}}
           className="col-span-12 lg:col-span-8 xl:col-span-7">
-            <div className="bg-white p-0 sm:p-8 relative">
+            <div className="bg-white p-0 sm:p-8 relative text-gray-900">
               <Swiper spaceBetween={30} slidesPerView={1} loop={true}>
                 <div className="absolute z-50 bottom-8 sm:bottom-0 right-[80px] sm:right-[88px] visible">
                   <SwiperBtnNext className="h-9 w-9 shadow-md flex justify-center items-center bg-secondary transition-all delay-100 ease-in-out">

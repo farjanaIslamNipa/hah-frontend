@@ -4,7 +4,7 @@ import {fadeIn} from "../../variants";
 
 const AboutUsSection = () => {
   return (
-    <div className="container-padding">
+    <div className="container-padding ">
       <h1 className="section-title">What we do</h1>
       <div className="about-us-bg mt-12 pt-10 md:pt-24 lg:pt-32">
         <div className="custom-container">
@@ -15,7 +15,7 @@ const AboutUsSection = () => {
               whileInView={"show"}
               viewport={{once: false}}
             ><img src={aboutUsImg} alt="" className="w-full" /></motion.div>
-            <div className="bg-white p-5 sm:p-8 space-y-8">
+            <div className="bg-white dark:bg-gray-800 p-5 sm:p-8 space-y-8">
               <div>
                 <p>
                   <b>About us:</b>

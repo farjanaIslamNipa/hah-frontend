@@ -62,7 +62,7 @@ textarea {
   @apply bg-gradient-to-r from-brand via-[#05d1c4] to-[#26EEA0] rounded-md text-white px-4 py-2 font-bold;
 }
 .btn-outline {
-  @apply bg-white border border-gray-400 rounded-md text-brand px-6 py-2 font-semibold;
+  @apply  border border-gray-400 rounded-md text-brand px-6 py-2 font-semibold;
 }
 
 .active {
@@ -248,4 +248,7 @@ textarea {
 
 .checkbox:checked + .label .ball{
   transform: translateX(27px);
+}
+.swiper-pagination-bullet-active{
+  background: #05d1c4 !important;
 }

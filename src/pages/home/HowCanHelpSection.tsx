@@ -7,7 +7,7 @@ import {fadeIn} from "../../variants";
 const HowCanHelpSection = () => {
   return (
     <div
-    className="bg-[#012139] pt-10 md:pt-20 mt-8 md:mt-16 lg:mt-20 pb-10 md:pb-24">
+    className="bg-[#012139] pt-10 md:pt-20 mt-8 md:mt-16 lg:mt-20 dark:mt-0 pb-10 md:pb-24">
       <div className="custom-container">
         <h1 className="section-title text-white">How we can help you</h1>
         <motion.div
