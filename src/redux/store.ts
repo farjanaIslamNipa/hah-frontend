@@ -3,7 +3,7 @@ import {baseApi} from './api/baseApi'
 import authReducer from './features/auth/authSlice'
 import supplyReducer from './features/supply/supplySlice'
 import donationReducer from './features/donations/donationSlice'
-import opinionReducer from './features/opinions/opinionSlice'
+import commentsReducer from './features/comments/commentSlice'
 import testimonialReducer from './features/testimonials/testimonialSlice'
 import volunteerReducer from './features/volunteers/volunteerSlice'
 import storage from 'redux-persist/lib/storage'
@@ -30,7 +30,7 @@ export const store = configureStore({
     auth: persistedAuthReducer,
     supplies: supplyReducer,
     donations: donationReducer,
-    opinions: opinionReducer,
+    comments: commentsReducer,
     testimonials: testimonialReducer,
     volunteers: volunteerReducer,
   },

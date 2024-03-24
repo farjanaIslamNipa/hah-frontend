@@ -1,51 +1,44 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import {FormEvent, useRef, useState} from 'react';
 import communityImg from '../../assets/images/donor-bg.png'
 import Button from '../../components/ui/Button';
-import {useAddOpinionMutation} from '../../redux/features/opinions/opinionApi';
+import {useAddCommentMutation} from '../../redux/features/comments/commentApi';
 import {toast} from 'sonner';
-import {TResponse} from '../../types';
-import {TOpinion} from '../../types/opinion.type';
+import {TComment, TResponse} from '../../types';
+import {FieldValues, useForm} from 'react-hook-form';
+import {zodResolver} from '@hookform/resolvers/zod';
+import {commentSchema} from './zodCommentValidation';
 
-type TUserInfo = {
-  username: string | null;
-  email: string | null;
-}
+const CommunityHeader = () => {
 
-const CommunityHeader = ({userInfo} : {userInfo: TUserInfo}) => {
-  const [opinion, setOpinion] = useState('')
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm({ resolver: zodResolver(commentSchema) });
 
-  const [addOpinion] = useAddOpinionMutation()
+  const [addComment] = useAddCommentMutation()
 
-  const opinionRef = useRef<HTMLTextAreaElement | null>(null)
+  const onSubmit = async (data: FieldValues) => {
 
-  const handleOpinion = async(e : FormEvent) => {
-    e.preventDefault()
-    const opinionData = {
-      username: userInfo.username,
-      email: userInfo.email,
-      opinion,
-      comments: []
-    }
-    const toastId = toast.loading('Publishing ...')
+    const toastId = toast.loading('Comment publishing ...')
+
     try {
-      const res = await addOpinion(opinionData) as TResponse<TOpinion>;
+      const res = await addComment(data) as TResponse<TComment>;
 
       if(res?.error){
         throw new Error(res?.error?.data?.message) 
       }
-      toast.success("Published successfully", { id: toastId, duration: 2000 });
-      if(opinionRef.current){
-       opinionRef.current.value = ''
-      }
+      toast.success("Comment added successfully", { id: toastId, duration: 2000 });
+      reset()
     } catch (err : any) {
       toast.error(err?.message ? err.message : "Something went wrong", { id: toastId, duration: 2000 });
     }
-  }
+  };
   return (
     <div className="grid grid-cols-12">
     <div className="col-span-5 bg-brand bg-opacity-25">
-      <div className="p-6">
+      <div className="p-6 h-full flex items-center justify-center">
         <img src={communityImg} alt="Community" />
       </div>
     </div>
@@ -55,8 +48,31 @@ const CommunityHeader = ({userInfo} : {userInfo: TUserInfo}) => {
         <p>Gratitude doesn't seem enough to express our appreciation for the medical teams and supply providers who stood by us during the aftermath of the disaster. Your unwavering commitment to our well-being restored our faith in humanity. Thank you from the bottom of our hearts </p>
         <p className="my-4 font-semibold text-brand text-[18px]">We're eager to hear your perspective! Share your thoughts with us</p>
         <div className="mt-4">
-          <form onSubmit={(e) => handleOpinion(e)}>
-            <textarea ref={opinionRef} defaultValue={opinion} onChange={(e) => setOpinion(e.target.value)} name="opinion" id="opinion" rows={3} placeholder='Share your thoughts' className="border border-gray-300 dark:border-brand w-full py-2 px-4 rounded-md focus:outline-none focus:border-brand placeholder:text-sm bg-whit dark:bg-gray-800" ></textarea>
+          <form onSubmit={handleSubmit(onSubmit)} className='space-y-2'>
+            <div>
+              <input {...register('name')} type="text" className='custom-input' placeholder='Enter your name' />
+              {errors?.name && (
+                <span className="text-xs text-red-500">
+                  {errors.name.message as string}
+                </span>
+              )}
+            </div>
+            <div>
+              <input {...register('email')} type="text" className='custom-input' placeholder='Enter your email' />
+              {errors?.email && (
+                <span className="text-xs text-red-500">
+                  {errors.email.message as string}
+                </span>
+              )}
+            </div>
+            <div>
+              <textarea {...register('comment')} name="comment" id="comment" rows={2} placeholder='Share your thoughts' className="custom-input" ></textarea>
+              {errors?.email && (
+                <span className="text-xs text-red-500">
+                  {errors.email.message as string}
+                </span>
+              )}
+            </div>
             <div className='text-end'>
               <Button type='submit'>Publish your opinion</Button>
             </div>

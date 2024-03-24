@@ -40,7 +40,7 @@ const VolunteerSignUp = () => {
       <main className="custom-container my-14">
         <div className="max-w-[70%] mx-auto">
         <p className="text-center">Are you passionate about making a difference in your community? Do you want to contribute your time and skills to meaningful causes? Join us as a volunteer and become part of a dedicated team working towards positive change!</p>
-          <div className=" border rounded-2xl p-8 mt-6 mx-20">
+          <div className="border border-gray-400 dark:border-gray-800 rounded-2xl p-8 mt-6 mx-20 bg-white dark:bg-gray-800">
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
               <div>
                 <label className="text-sm">Name</label>
@@ -49,7 +49,7 @@ const VolunteerSignUp = () => {
                   id="name"
                   {...register("name")}
                   type="text"
-                  className="border border-gray-300 w-full py-2 px-4 rounded-md focus:outline-none focus:border-brand placeholder:text-sm" placeholder="Enter your name"
+                  className="custom-input" placeholder="Enter your name"
                 />
                 {errors?.name && (
                   <span className="text-xs text-red-500">
@@ -64,7 +64,7 @@ const VolunteerSignUp = () => {
                   id="email"
                   {...register("email")}
                   type="text"
-                  className="border border-gray-300 w-full py-2 px-4 rounded-md focus:outline-none focus:border-brand placeholder:text-sm"
+                  className="custom-input"
                   placeholder="Enter your email address"
                 />
                 {errors?.email && (
@@ -80,7 +80,7 @@ const VolunteerSignUp = () => {
                   id="phone"
                   {...register("phone")}
                   type="text"
-                  className="border border-gray-300 w-full py-2 px-4 rounded-md focus:outline-none focus:border-brand placeholder:text-sm capitalize"
+                  className="custom-input"
                   placeholder="Enter your phone number"
                 />
                 {errors?.phone && (
@@ -97,7 +97,7 @@ const VolunteerSignUp = () => {
                   id="address"
                   {...register("address")}
                   type="text"
-                  className="border border-gray-300 w-full py-2 px-4 rounded-md focus:outline-none focus:border-brand placeholder:text-sm"
+                  className="custom-input"
                   placeholder="Enter Address"
                 />
                 {errors?.address && (

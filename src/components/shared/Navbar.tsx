@@ -27,12 +27,12 @@ const Navbar = () => {
     <div className="bg-black md:bg-white dark:bg-gray-900 shadow relative z-50">
       <div className="bg-[#DFFCF1] dark:bg-[#96e9e4] relative py-1">
         <div className="custom-container">
-          <div className=" flex justify-end items-center gap-3">
+          <div className=" flex justify-center md:justify-end items-center gap-4">
             {/* Theme switch button */}
             <ThemeButton />
             <NavLink className="flex items-center gap-2" to="/volunteer" end>
               <img src={volunteerIcon} alt="Login" className="h-5" />
-              <span className="text-gray-500 hover:text-brand font-bold">Join as a volunteer</span>
+              <span className="text-gray-600 hover:text-brand font-bold">Join as a volunteer</span>
             </NavLink>
             {
               !token && 
@@ -46,7 +46,7 @@ const Navbar = () => {
               token && 
               <button onClick={handleLogout} className="flex items-center gap-1">
                 <img src={logoutIcon} alt="Logout" className="h-4" />
-                <span className="text-gray-500 font-bold">Logout</span>
+                <span className="text-gray-600 font-bold">Logout</span>
               </button>
             }
           </div>
@@ -57,7 +57,7 @@ const Navbar = () => {
           <nav className="flex justify-between items-center">
             <div>
               <NavLink to="/" end>
-                <img src={logo} alt="Logo" className="h-16" />
+                <img src={logo} alt="Logo" className="h lg:h-16" />
               </NavLink>
             </div>
             <div
