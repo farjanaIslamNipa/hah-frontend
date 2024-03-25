@@ -6,14 +6,16 @@ export const donationApi = baseApi.injectEndpoints({
       query: () => ({
         url: "/leaderboard",
         method: "GET"
-      })
+      }),
+      providesTags: ["donations"]
     }),
     addDonatio: builder.mutation({
       query: (donationInfo) => ({
         url: "/donate",
         method: "POST",
         body: donationInfo,
-      })
+      }),
+      invalidatesTags: ["donations"]
     }),
 
   }),

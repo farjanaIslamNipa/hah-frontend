@@ -6,14 +6,16 @@ export const volunteerApi = baseApi.injectEndpoints({
       query: () => ({
         url: "/volunteers",
         method: "GET"
-      })
+      }),
+      providesTags: ['volunteers']
     }),
     addVolunteer: builder.mutation({
       query: (volunteerInfo) => ({
         url: "/add-volunteer",
         method: "POST",
         body: volunteerInfo,
-      })
+      }),
+      invalidatesTags: ["volunteers"]
     })
 
   }),

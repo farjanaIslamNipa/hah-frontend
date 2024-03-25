@@ -53,24 +53,39 @@ const DonateModal = ({
           <img src={closeIcon} alt="Close modal" />
         </button>
       </div>
-      <div className="bg-brand bg-opacity-5 dark:bg-opacity-15 rounded-lg w-full p-8 mt-2 flex justify-center">
-        <div className="text-gray-800 dark:text-gray-400">
-          <div className="flex">
-            <div className="space-y-2">
-              <p className="font-bold">Name:</p>
-              <p className="font-bold">Email:</p>
-              <p className="font-bold">Donation Title:</p>
-              <p className="font-bold">Category:</p>
-              <p className="font-bold">Quantity:</p>
+      <div className="text-gray-800 dark:text-gray-400">
+        <div className="overflow-x-auto relative">
+              <div className="overflow-x-auto relative shadow-md sm:rounded-lg">
+                <table className="w-full text-sm text-left text-gray-800 dark:text-gray-400">
+                  <tbody>
+                    <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                      <td className="py-4 px-6 w-[30%]">Name:</td>
+                      <td className="py-4 px-6">{donationInfo?.name || "Not Found"}</td>
+                    </tr>
+                    <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                      <td className="py-4 px-6 w-[30%]">Email:</td>
+                      <td className="py-4 px-6">{donationInfo?.email || "Not Found"}</td>
+                    </tr>
+                    <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                      <td className="py-4 px-6 w-[30%]">Donation Title:</td>
+                      <td className="py-4 px-6">{donationInfo?.title || "Not Found"}</td>
+                    </tr>
+                    <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                      <td className="py-4 px-6 w-[30%]">Category:</td>
+                      <td className="py-4 px-6">{donationInfo?.category || "Not Found"}</td>
+                    </tr>
+                    <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                      <td className="py-4 px-6 w-[30%]">Quantity:</td>
+                      <td className="py-4 px-6">{donationInfo?.quantity || "Not Found"}</td>
+                    </tr>
+                    <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                      <td className="py-4 px-6 w-[30%]">Description:</td>
+                      <td className="py-4 px-6">{donationInfo?.description || "No description added"}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
             </div>
-            <div className="space-y-2 pl-10">
-              <p className="font-medium">{donationInfo?.name || "Not Found"}</p>
-              <p className="font-medium">{donationInfo?.email || "Not Found"}</p>
-              <p className="font-medium">{donationInfo?.title || "Not Found"}</p>
-              <p className="font-medium">{donationInfo?.category || "Not Found"}</p>
-              <p className="font-medium">{donationInfo?.quantity || "Not Found"}</p>
-            </div>
-          </div>
           <p className="my-4 font-semibold text-red-700 text-[18px] text-center">Would you like to contribute a donation to support our cause ?</p>
           <form onSubmit={handleSubmit} className="mt-3">
             <div className="flex justify-end gap-6 mt-5">
@@ -79,7 +94,6 @@ const DonateModal = ({
             </div>
           </form>
         </div>
-      </div>
     </Modal>
   );
 };

@@ -5,8 +5,9 @@ import {fadeIn} from "../../variants";
 const AboutUsSection = () => {
   return (
     <div className="container-padding ">
-      <h1 className="section-title">What we do</h1>
-      <div className="about-us-bg mt-12 pt-10 md:pt-24 lg:pt-32">
+ 
+      <div className="about-us-bg pt-10 md:pt-16">
+      <h1 className="section-title mb-12 dark:text-gray-800">What we do</h1>
         <div className="custom-container">
           <div className="w-full md:w-[80%] lg:w-[60%] mx-auto">
             <motion.div

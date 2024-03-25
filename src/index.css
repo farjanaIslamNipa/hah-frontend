@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 *{
-  transition: all 0.3s ease;
+  transition: background 0.3s ease;
 }
 
 html{
@@ -256,7 +256,7 @@ textarea {
 }
 
 .leader-board-bg{
-  background-image: url('./assets/images/leaderboard-bg.jpg');
+  background-image: url('./assets/images/leader-bg.jpg');
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;

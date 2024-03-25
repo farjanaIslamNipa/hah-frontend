@@ -1,8 +1,5 @@
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay } from "swiper/modules";
 import "swiper/css";
-import "swiper/css/autoplay";
-import "swiper/css/navigation";
 import SwiperBtnNext from "../../components/SwiperBtnNext";
 import SwiperBtnPrev from "../../components/SwiperBtnPrev";
 import quoteTop from "../../assets/images/home/qoute-top.svg";
@@ -46,17 +43,7 @@ const TestimonialSection = () => {
           <div
           className="col-span-12 lg:col-span-8 xl:col-span-7">
             <div className="bg-white dark:bg-gray-800 bg-opacity-100 dark:bg-opacity-45 p-0 sm:p-8 relative">
-              <Swiper 
-              parallax={true}
-              observer={true}
-              observeParents={true}
-              autoplay={{
-                delay: 2500,
-                disableOnInteraction: false,
-              }}
-              loop={true}
-              modules={[Autoplay]}
-              >
+              <Swiper>
                 <div className="absolute z-50 bottom-8 sm:bottom-0 right-[80px] sm:right-[88px] visible">
                   <SwiperBtnNext className="h-9 w-9 shadow-md flex justify-center items-center bg-secondary transition-all delay-100 ease-in-out">
                     <img src={arrowNext} alt="Next" />
@@ -79,8 +66,8 @@ const TestimonialSection = () => {
                       <div className="flex gap-3 items-center">
                         <img src={testimonialGif} alt="" className="h-16" />
                         <div className="pl-3 border-l border-gray-400 py-1">
-                          <p className="font-bold mb-0">{testimonial?.name ? testimonial?.name : testimonial?.username}</p>
-                          <p className="text-sm">{testimonial.address}</p>
+                          <p className="font-bold mb-0 capitalize">{testimonial?.name ? testimonial?.name : testimonial?.username}</p>
+                          <p className="text-sm capitalize">{testimonial.address}</p>
                         </div>
                       </div>
                     </div>

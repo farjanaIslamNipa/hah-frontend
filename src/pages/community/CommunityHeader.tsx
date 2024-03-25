@@ -67,9 +67,9 @@ const CommunityHeader = () => {
             </div>
             <div>
               <textarea {...register('comment')} name="comment" id="comment" rows={2} placeholder='Share your thoughts' className="custom-input" ></textarea>
-              {errors?.email && (
+              {errors?.comment && (
                 <span className="text-xs text-red-500">
-                  {errors.email.message as string}
+                  {errors.comment.message as string}
                 </span>
               )}
             </div>

@@ -57,10 +57,11 @@ const DonorLeaderBoard = () => {
           </div>
         </div>
       </div>
-      <div className="leader-board-bg pt-14 pb-20">
+      <div className="leader-board-bg py-14 sm:py-20">
         <div className='custom-container'>
-          <h1 className="text-center text-white text-2xl font-extrabold pb-8">Champions of Generosity: Donors Leaderboard</h1>
-          <div className=" sm:max-w-[90%] lg:max-w-[70%] xl:max-w-[60%] mx-auto bg-white dark:bg-gray-900 rounded-2xl p-5 md:p-10 shadow-lg">
+
+          <div className=" sm:max-w-[90%] lg:max-w-[70%] xl:max-w-[60%] mx-auto bg-white dark:bg-gray-900 rounded-2xl px-5 md:px-10 pt-6 pb-8 shadow-lg">
+          <h1 className="text-center text-2xl font-bold pb-8">Champions of Generosity: Donors Leaderboard</h1>
             <div className="overflow-x-auto relative">
               <div className="overflow-x-auto relative shadow-md sm:rounded-lg">
                 <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
@@ -73,7 +74,7 @@ const DonorLeaderBoard = () => {
                   </thead>
                   <tbody>
                     {
-                      leaderBoard?.map((leader, index) => <tr key={leader.email} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                      [...leaderBoard]?.sort((a : any, b : any) => b.amount - a.amount)?.map((leader, index) => <tr key={leader.email} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                       <td className="py-4 px-6">{index + 1}</td>
                       <td className="py-4 px-6">{leader?.email}</td>
                       <td className="py-4 px-6 text-center">{leader?.amount} {Number(leader?.amount) < 2 ? 'Time' : 'Times'}</td>
